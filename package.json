@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/nickfrahm/mbfc/issues"
   },
-  "homepage": "https://github.com/nickfrahm/mbfc#readme"
+  "homepage": "https://github.com/nickfrahm/mbfc#readme",
+  "proxy": "http://localhost:5000"
 }
