@@ -1,0 +1,19 @@
+{
+  "name": "mbfc",
+  "version": "1.0.0",
+  "description": "A site to track drafted team's points for my friends and I.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickfrahm/mbfc.git"
+  },
+  "author": "Nick Frahm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nickfrahm/mbfc/issues"
+  },
+  "homepage": "https://github.com/nickfrahm/mbfc#readme"
+}
