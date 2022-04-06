@@ -1,18 +1,18 @@
-import './App.css';
-import { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Nav from './components/Nav';
+import Dashboard from './components/DashComponents/Dashboard';
 
 function App() {
-  const [test, setTest] = useState('');
-  useEffect(() => {
-    fetch('/api/test')
-      .then((res) => res.json())
-      .then((txtObj) => setTest(txtObj.text))
-      .catch((err) => {
-        setTest('something went wrong');
-        console.log(err);
-      });
-  }, []);
-  return <div className='App'>{test}</div>;
+  return (
+    <div className='bg-gray-900 text-slate-50 min-h-screen m-auto'>
+      <BrowserRouter basename='/'>
+        <Nav title='MBFC' />
+        <Routes>
+          <Route path='/' element={<Dashboard />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
