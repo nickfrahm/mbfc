@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const port = 5000;
-const test = require('./routes/api/test');
+const mbfcAPI = require('./routes/api/tables/tableData');
 
-app.use('/api', test);
+app.use('/api', mbfcAPI);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
