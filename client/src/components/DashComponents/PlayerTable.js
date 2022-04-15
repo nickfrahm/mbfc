@@ -27,7 +27,7 @@ function PlayerTable(props) {
               wins={team.wins}
               draws={team.draws}
               losses={team.losses}
-              points={parseInt(team.wins) * 3 + parseInt(team.draws)}
+              points={team.points}
             />
           </div>
         );
