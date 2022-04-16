@@ -41,18 +41,27 @@ exports.scrapeTableData = function (url) {
 
 //TODO: Remove hardcoding of links
 exports.scrapeAllTableData = function () {
-  const leagueUrls = [
-    'https://www.fotmob.com/leagues/87/overview/laliga',
-    'https://www.fotmob.com/leagues/54/overview/1.-bundesliga',
-    //'https://www.fotmob.com/leagues/47/overview/premier-league',
-    //'https://www.fotmob.com/leagues/53/overview/ligue-1',
-    //'https://www.fotmob.com/leagues/55/overview/serie-a',
-  ];
-  const promises = leagueUrls.map((url) => {
-    if (url.length > 0) {
-      return scrapeTableData(url);
-    }
-  });
+  try {
+    const links = [
+      'https://www.fotmob.com/leagues/87/overview/laliga',
+      'https://www.fotmob.com/leagues/54/overview/1.-bundesliga',
+      'https://www.fotmob.com/leagues/47/overview/premier-league',
+      'https://www.fotmob.com/leagues/53/overview/ligue-1',
+      'https://www.fotmob.com/leagues/55/overview/serie-a',
+    ];
 
-  return Promise.all(promises);
+    let promises = links.map((url) => {
+      return exports.scrapeTableData(url);
+    });
+
+    return Promise.all(promises);
+  } catch (error) {
+    return Promise.reject('Error fetching all table data');
+  }
 };
+
+//'https://www.fotmob.com/leagues/87/overview/laliga',
+//'https://www.fotmob.com/leagues/54/overview/1.-bundesliga',
+//'https://www.fotmob.com/leagues/47/overview/premier-league',
+//'https://www.fotmob.com/leagues/53/overview/ligue-1',
+//'https://www.fotmob.com/leagues/55/overview/serie-a',

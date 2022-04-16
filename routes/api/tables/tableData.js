@@ -2,6 +2,23 @@ const express = require('express');
 const router = express.Router();
 const tableScraper = require('../../../scraper/tableData');
 
+//get all league data. Leagues Array->Team Array->Team Object
+//TODO: refactor hardcorded URLs.
+router.get('/tableData/all', (req, res) => {
+  try {
+    tableScraper
+      .scrapeAllTableData()
+      .then((data) => res.json(data))
+      .catch((err) => {
+        console.log(err);
+        throw err;
+      });
+  } catch (error) {
+    res.status(400);
+    res.send('Error getting all table data: ' + error);
+  }
+});
+
 //get single league data TODO: Refactor to remove hardcoded links.
 router.get('/tableData/:league', (req, res) => {
   try {
@@ -19,25 +36,9 @@ router.get('/tableData/:league', (req, res) => {
 
     tableScraper.scrapeTableData(url).then((data) => res.json(data));
   } catch (error) {
-    res.send('Error ' + error);
-  }
-});
-
-//get all league data. Leagues Array->Team Array->Team Object
-//TODO: refactor hardcorded URLs.
-router.get('/tableData/all', (req, res) => {
-  try {
-    tableScraper.scrapeAllTableData().then((data) => res.json(data));
-  } catch (error) {
-    res.send('Error ' + error);
+    res.status(400);
+    res.send('Error getting table data: ' + error);
   }
 });
 
 module.exports = router;
-
-//Scraper Links
-//EPL: https://www.fotmob.com/leagues/47/overview/premier-league
-//La Liga: https://www.fotmob.com/leagues/87/overview/laliga
-//Bundesliga: https://www.fotmob.com/leagues/54/overview/1.-bundesliga
-//Serie A: https://www.fotmob.com/leagues/55/overview/serie-a
-//Ligue 1: https://www.fotmob.com/leagues/53/overview/ligue-1

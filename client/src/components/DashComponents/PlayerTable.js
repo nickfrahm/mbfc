@@ -4,11 +4,7 @@ import { useState, useEffect } from 'react';
 function PlayerTable(props) {
   const [teamData, setTeamData] = useState([]);
 
-  useEffect(() => {
-    fetch('/api/tableData/')
-      .then((res) => res.json())
-      .then((data) => setTeamData(data));
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className='bg-gray-700 rounded-md w-11/12 m-auto table mt-6 lg:mx-6 lg:flex-auto'>
