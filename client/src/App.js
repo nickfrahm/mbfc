@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
 import Dashboard from './components/DashComponents/Dashboard';
+import Admin from './components/AdminComponents/Admin';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <Nav title='MBFC' />
         <Routes>
           <Route path='/' element={<Dashboard />} />
+          <Route path='/admin' element={<Admin />} />
         </Routes>
       </BrowserRouter>
     </div>
