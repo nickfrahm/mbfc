@@ -1,5 +1,5 @@
 function PlayerForm() {
-  return <div className='container'></div>;
+  return <div className=''>test</div>;
 }
 
 export default PlayerForm;
