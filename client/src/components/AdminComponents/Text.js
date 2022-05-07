@@ -9,7 +9,12 @@ function Text(props) {
       <label for={textType} style={hide}>
         {textType}
       </label>
-      <input name={textType} type='text' placeholder={text} />
+      <input
+        name={textType}
+        type='text'
+        placeholder={text}
+        className='rounded-lg py-1 px-2 m-2 md:w-2/3 w-1/3'
+      />
     </div>
   );
 }

@@ -10,7 +10,7 @@ function MainContainer() {
   ];
 
   return (
-    <div className='bg-gray-700 rounded-md flex w-11/12 content-center justify-center'>
+    <div className='bg-gray-700 rounded-md flex w-11/12 content-center justify-center flex-col md:flex-row'>
       <PlayerMenu players={mockPlayers} />
       <PlayerForm />
     </div>
