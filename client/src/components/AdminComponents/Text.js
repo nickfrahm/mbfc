@@ -1,5 +1,5 @@
 function Text(props) {
-  const { textType } = props;
+  const { textType, text } = props;
   const hide = {
     display: 'none',
   };
@@ -9,7 +9,7 @@ function Text(props) {
       <label for={textType} style={hide}>
         {textType}
       </label>
-      <input name={textType} type='text' placeholder={textType} />
+      <input name={textType} type='text' placeholder={text} />
     </div>
   );
 }
