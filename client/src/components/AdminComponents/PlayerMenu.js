@@ -10,7 +10,11 @@ function PlayerMenu(props) {
         Players
       </h2>
       <PlayersList players={players} />
-      <Text textType='playerName' text='Player' />
+      <Text
+        textType='playerName'
+        text='Player'
+        styles='rounded-lg py-1 px-2 m-2 md:w-2/3 w-1/3'
+      />
       <Button
         text='Add'
         style='container bg-green-500 text-black rounded-md cursor-pointer w-24 mx-auto my-2'

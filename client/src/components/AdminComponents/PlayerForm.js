@@ -7,6 +7,7 @@ function PlayerForm(props) {
   return (
     <div className='md:w-2/3 flex flex-col justify-center content-center w-11/12 md:m-2 m-6 text-center'>
       <form>
+        <Section type='text' subject='name' textOverride={`Player Name`} />
         <Section type='list' subject='teams' />
         <Section type='list' subject='competitions' />
         <Section
