@@ -13,7 +13,7 @@ function List(props) {
         styles='rounded-lg py-1 px-2 m-2 md:w-1/3 w-1/8'
       />
       <ul>
-        {player
+        {player.teams
           ? player.teams.foreach((team) => {
               return;
               <ListItem detail={team.name} itemKey={uniqid()} />;

@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 
 function MainContainer() {
   const [players, setPlayers] = useState([]);
-  const [active, setActive] = useState(false);
+  const [activePlayer, setActivePlayer] = useState({});
+
   const mockPlayers = [
     { id: 'a1', name: 'Nick' },
     { id: 'b2', name: 'Jeremy' },
@@ -18,8 +19,12 @@ function MainContainer() {
 
   return (
     <div className='bg-gray-700 rounded-md flex w-11/12 content-center justify-center flex-col md:flex-row'>
-      <PlayerMenu players={players} active={active} setActive={setActive} />
-      <PlayerForm players={players} active={active} />
+      <PlayerMenu
+        players={players}
+        activePlayer={activePlayer}
+        setActivePlayer={setActivePlayer}
+      />
+      <PlayerForm players={players} activePlayer={activePlayer} />
     </div>
   );
 }

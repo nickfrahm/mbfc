@@ -13,7 +13,7 @@ function Text(props) {
         name={textType}
         type='text'
         placeholder={textOverride ? textOverride : text}
-        className={styles}
+        className={styles + ' text-black'}
       />
     </div>
   );
