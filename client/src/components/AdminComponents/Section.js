@@ -2,7 +2,7 @@ import Text from './Text';
 import List from './List';
 
 function Section(props) {
-  const { subject, type, textOverride, player } = props;
+  const { subject, type, textOverride, player, isTeams } = props;
 
   return (
     <div className='bg-blue-500'>
@@ -24,6 +24,7 @@ function Section(props) {
               type={type}
               textOverride={textOverride}
               player={player}
+              isTeams={isTeams}
             />
           );
         }

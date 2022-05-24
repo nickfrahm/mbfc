@@ -29,8 +29,18 @@ function PlayerForm(props) {
           textOverride={`Player Name`}
           player={activePlayer}
         />
-        <Section type='list' subject='teams' player={activePlayer} />
-        <Section type='list' subject='competitions' player={activePlayer} />
+        <Section
+          type='list'
+          subject='teams'
+          player={activePlayer}
+          isTeams={true}
+        />
+        <Section
+          type='list'
+          subject='competitions'
+          player={activePlayer}
+          isTeams={false}
+        />
         <Section
           type='text'
           subject='championsLeague'
@@ -39,7 +49,7 @@ function PlayerForm(props) {
         />
         <Button
           text='Save All'
-          style='container bg-green-500 text-black rounded-md cursor-pointer w-24 mx-auto my-2 text-center'
+          styles='container bg-green-500 text-black rounded-md cursor-pointer w-24 mx-auto my-2 text-center'
         />
       </form>
     </div>

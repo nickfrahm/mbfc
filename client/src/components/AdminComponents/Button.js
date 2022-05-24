@@ -1,6 +1,6 @@
 function Button(props) {
-  const { text, style } = props;
-  return <div className={style}>{text}</div>;
+  const { text, styles } = props;
+  return <div className={styles}>{text}</div>;
 }
 
 export default Button;

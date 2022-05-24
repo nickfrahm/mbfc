@@ -1,7 +1,7 @@
 function ListItem(props) {
-  const { detail, itemKey } = props;
+  const { detail, itemKey, clickHandler, id } = props;
   return (
-    <li key={itemKey} className='cursor-pointer'>
+    <li id={id} key={itemKey} className='cursor-pointer' onClick={clickHandler}>
       {detail}
     </li>
   );
