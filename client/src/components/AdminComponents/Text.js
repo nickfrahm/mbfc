@@ -1,5 +1,5 @@
 function Text(props) {
-  const { textType, text, textOverride, styles } = props;
+  const { textType, text, textOverride, styles, val, changeHandler } = props;
   const hide = {
     display: 'none',
   };
@@ -14,6 +14,8 @@ function Text(props) {
         type='text'
         placeholder={textOverride ? textOverride : text}
         className={styles + ' text-black'}
+        value={val ? val : ''}
+        onChange={changeHandler}
       />
     </div>
   );

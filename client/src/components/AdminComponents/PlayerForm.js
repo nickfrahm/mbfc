@@ -2,23 +2,7 @@ import Section from './Section';
 import Button from './Button';
 
 function PlayerForm(props) {
-  const { players, activePlayer } = props;
-
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-
-    switch (name) {
-      case '':
-        //setName(value);
-        break;
-      case '':
-        //setEmail(value);
-        break;
-      case '':
-        //setPhoneNumber(value);
-        break;
-    }
-  };
+  const { activePlayer, changeHandler } = props;
 
   return (
     <div className='md:w-2/3 flex flex-col justify-center content-center w-11/12 md:m-2 m-6 text-center'>
@@ -26,26 +10,32 @@ function PlayerForm(props) {
         <Section
           type='text'
           subject='name'
-          textOverride={`Player Name`}
+          textOverride='Player Name'
           player={activePlayer}
+          changeHandler={changeHandler}
         />
         <Section
           type='list'
           subject='teams'
           player={activePlayer}
           isTeams={true}
+          textOverride='Add a team...'
+          changeHandler={changeHandler}
         />
         <Section
           type='list'
           subject='competitions'
           player={activePlayer}
           isTeams={false}
+          textOverride='Add Competition Won...'
+          changeHandler={changeHandler}
         />
         <Section
           type='text'
           subject='championsLeague'
           textOverride={`Champion's League Points`}
           player={activePlayer}
+          changeHandler={changeHandler}
         />
         <Button
           text='Save All'
