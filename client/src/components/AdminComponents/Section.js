@@ -5,7 +5,7 @@ function Section(props) {
   const { subject, type, textOverride, player, isTeams, changeHandler } = props;
 
   return (
-    <div className='bg-blue-500'>
+    <div>
       {(() => {
         if (type === 'text') {
           return (

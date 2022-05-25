@@ -6,7 +6,7 @@ function PlayerForm(props) {
 
   return (
     <div className='md:w-2/3 flex flex-col justify-center content-center w-11/12 md:m-2 m-6 text-center'>
-      <form>
+      <form className='border-2 border-solid border-white rounded-md'>
         <Section
           type='text'
           subject='name'
