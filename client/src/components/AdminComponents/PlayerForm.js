@@ -24,7 +24,7 @@ function PlayerForm(props) {
         />
         <Section
           type='list'
-          subject='competitions'
+          subject='competitionWins'
           player={activePlayer}
           isTeams={false}
           textOverride='Add Competition Won...'
@@ -32,7 +32,7 @@ function PlayerForm(props) {
         />
         <Section
           type='text'
-          subject='championsLeague'
+          subject='uclPoints'
           textOverride={`Champion's League Points`}
           player={activePlayer}
           changeHandler={changeHandler}

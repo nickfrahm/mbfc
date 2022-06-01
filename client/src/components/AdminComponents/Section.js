@@ -16,9 +16,8 @@ function Section(props) {
               changeHandler={changeHandler}
               player={player}
               styles='rounded-lg py-1 px-2 m-2 md:w-2/3 w-1/3'
-              val={
-                subject === 'championsLeague' ? player.uclPoints : player.name
-              }
+              val={subject === 'uclPoints' ? player.uclPoints : player.name}
+              isNumber={true}
             />
           );
         } else {

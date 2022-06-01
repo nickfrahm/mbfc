@@ -1,10 +1,19 @@
 import PlayerMenu from './PlayerMenu';
 import PlayerForm from './PlayerForm';
+import uniqid from 'uniqid';
 import { useState, useEffect } from 'react';
 
 function MainContainer() {
   const [players, setPlayers] = useState([]);
-  const [activePlayer, setActivePlayer] = useState({});
+  const [activePlayer, setActivePlayer] = useState({
+    id: uniqid(),
+    name: '',
+    teams: [],
+    uclPoints: 0,
+    competitionWins: [],
+  });
+  const [addTeamField, setAddTeamField] = useState('');
+  const [addCompField, setAddCompField] = useState('');
 
   const mockPlayers = [
     {
@@ -41,15 +50,38 @@ function MainContainer() {
     setPlayers(mockPlayers);
   }, []);
 
+  useEffect(() => {
+    console.log(activePlayer);
+  });
+
   const handlePlayerClick = (e) => {
     e.preventDefault();
     const { id } = e.target;
-    console.log('player clicked');
+    console.log('player clicked, id: ' + id);
     setActivePlayer(players.find((player) => player.id === id));
   };
 
   const changeHandler = (e) => {
     //handle input change
+    const { name, value, validity } = e.target;
+    switch (name) {
+      case 'name':
+        setActivePlayer({ ...activePlayer, name: value });
+        break;
+      case 'teams':
+        setAddTeamField(value);
+        break;
+      case 'competitionWins':
+        setAddCompField(value);
+        break;
+      case 'uclPoints':
+        validity.valid
+          ? setActivePlayer({ ...activePlayer, uclPoints: parseInt(value) })
+          : setActivePlayer({ ...activePlayer, uclPoints: 0 });
+        break;
+      default:
+        break;
+    }
   };
 
   return (

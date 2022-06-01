@@ -1,5 +1,6 @@
 function Text(props) {
-  const { textType, text, textOverride, styles, val, changeHandler } = props;
+  const { textType, text, textOverride, styles, val, changeHandler, isNumber } =
+    props;
   const hide = {
     display: 'none',
   };
@@ -12,10 +13,11 @@ function Text(props) {
       <input
         name={textType}
         type='text'
-        placeholder={textOverride ? textOverride : text}
         className={styles + ' text-black'}
-        value={val ? val : ''}
+        placeholder={textOverride ? textOverride : text}
+        defaultValue={val ? val : ''}
         onChange={changeHandler}
+        pattern={isNumber ? '[0-9]*' : '*'}
       />
     </div>
   );
