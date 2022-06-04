@@ -4,7 +4,14 @@ import uniqid from 'uniqid';
 import Button from './Button';
 
 function List(props) {
-  const { subject, textOverride, player, isTeams, changeHandler } = props;
+  const {
+    subject,
+    textOverride,
+    player,
+    isTeams,
+    changeHandler,
+    addToActiveArr,
+  } = props;
 
   return (
     <div className='flex flex-wrap flex-row justify-center m-2'>
@@ -20,6 +27,8 @@ function List(props) {
         <Button
           text='Add'
           styles='container bg-green-500 text-black rounded-md cursor-pointer mx-auto my-2 text-center w-1/4'
+          click={addToActiveArr}
+          name={subject}
         />
       </div>
       <ul className='w-2/3'>

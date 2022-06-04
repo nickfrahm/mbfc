@@ -52,6 +52,8 @@ function MainContainer() {
 
   useEffect(() => {
     console.log(activePlayer);
+    console.log(addTeamField);
+    console.log(addCompField);
   });
 
   const handlePlayerClick = (e) => {
@@ -69,16 +71,27 @@ function MainContainer() {
         setActivePlayer({ ...activePlayer, name: value });
         break;
       case 'teams':
+        console.log('team text changed');
         setAddTeamField(value);
         break;
       case 'competitionWins':
         setAddCompField(value);
         break;
       case 'uclPoints':
-        validity.valid
+        validity.valid && !isNaN(parseInt(value))
           ? setActivePlayer({ ...activePlayer, uclPoints: parseInt(value) })
           : setActivePlayer({ ...activePlayer, uclPoints: 0 });
         break;
+      default:
+        break;
+    }
+  };
+
+  const addToActiveArr = (e) => {
+    e.preventDefault();
+    const { name } = e.target;
+
+    switch (name) {
       default:
         break;
     }
@@ -95,6 +108,7 @@ function MainContainer() {
         players={players}
         activePlayer={activePlayer}
         changeHandler={changeHandler}
+        addToActiveArr={addToActiveArr}
       />
     </div>
   );

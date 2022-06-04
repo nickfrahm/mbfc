@@ -2,7 +2,15 @@ import Text from './Text';
 import List from './List';
 
 function Section(props) {
-  const { subject, type, textOverride, player, isTeams, changeHandler } = props;
+  const {
+    subject,
+    type,
+    textOverride,
+    player,
+    isTeams,
+    changeHandler,
+    addToActiveArr,
+  } = props;
 
   return (
     <div>
@@ -28,6 +36,8 @@ function Section(props) {
               textOverride={textOverride}
               player={player}
               isTeams={isTeams}
+              changeHandler={changeHandler}
+              addToActiveArr={addToActiveArr}
             />
           );
         }

@@ -17,7 +17,7 @@ function Text(props) {
         placeholder={textOverride ? textOverride : text}
         defaultValue={val ? val : ''}
         onChange={changeHandler}
-        pattern={isNumber ? '[0-9]*' : '*'}
+        pattern={isNumber ? '[0-9]*' : '[A-Za-z0-9]'}
       />
     </div>
   );

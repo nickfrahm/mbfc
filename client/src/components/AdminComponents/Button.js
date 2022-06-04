@@ -1,6 +1,10 @@
 function Button(props) {
-  const { text, styles } = props;
-  return <div className={styles}>{text}</div>;
+  const { text, styles, click, name } = props;
+  return (
+    <div name={name} className={styles} onClick={click}>
+      {text}
+    </div>
+  );
 }
 
 export default Button;
