@@ -14,6 +14,7 @@ function MainContainer() {
   });
   const [addTeamField, setAddTeamField] = useState('');
   const [addCompField, setAddCompField] = useState('');
+  //const [addPlayerField, setAddPlayerField] = useState('');
 
   const mockPlayers = [
     {
@@ -54,13 +55,23 @@ function MainContainer() {
     console.log(activePlayer);
     console.log(addTeamField);
     console.log(addCompField);
+    console.log(players);
+    //console.log(addPlayerField);
   });
+
+  const resetAddFields = () => {
+    setAddCompField('');
+    setAddTeamField('');
+    document.getElementById('teams-txt').value = '';
+    document.getElementById('competitionWins-txt').value = '';
+  };
 
   const handlePlayerClick = (e) => {
     e.preventDefault();
     const { id } = e.target;
     console.log('player clicked, id: ' + id);
     setActivePlayer(players.find((player) => player.id === id));
+    resetAddFields();
   };
 
   const changeHandler = (e) => {
@@ -89,12 +100,42 @@ function MainContainer() {
 
   const addToActiveArr = (e) => {
     e.preventDefault();
-    const { name } = e.target;
+    const { id } = e.target;
 
-    switch (name) {
+    switch (id) {
+      case 'competitionWins':
+        if (addCompField.trim() !== '') {
+          setActivePlayer({
+            ...activePlayer,
+            competitionWins: [...activePlayer.competitionWins, addCompField],
+          });
+        }
+        break;
+      case 'teams':
+        if (addTeamField.trim() !== '') {
+          setActivePlayer({
+            ...activePlayer,
+            teams: [...activePlayer.teams, { name: addTeamField }],
+          });
+        }
+        break;
+      case 'AddPlayerBtn':
+        setPlayers([
+          ...players,
+          {
+            id: uniqid(),
+            name: 'New Player',
+            teams: [],
+            uclPoints: 0,
+            competitionWins: [],
+          },
+        ]);
+        break;
       default:
+        resetAddFields();
         break;
     }
+    resetAddFields();
   };
 
   return (
@@ -103,6 +144,7 @@ function MainContainer() {
         players={players}
         handlePlayerClick={handlePlayerClick}
         changeHandler={changeHandler}
+        addToActiveArr={addToActiveArr}
       />
       <PlayerForm
         players={players}

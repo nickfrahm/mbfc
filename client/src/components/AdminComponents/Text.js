@@ -11,6 +11,7 @@ function Text(props) {
         {textType}
       </label>
       <input
+        id={textType + '-txt'}
         name={textType}
         type='text'
         className={styles + ' text-black'}
