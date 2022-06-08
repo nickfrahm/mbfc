@@ -1,6 +1,15 @@
 function Text(props) {
-  const { textType, text, textOverride, styles, val, changeHandler, isNumber } =
-    props;
+  const {
+    textType,
+    text,
+    textOverride,
+    styles,
+    val,
+    changeHandler,
+    isNumber,
+    nameRef,
+    nullRef,
+  } = props;
   const hide = {
     display: 'none',
   };
@@ -12,6 +21,7 @@ function Text(props) {
       </label>
       <input
         id={textType + '-txt'}
+        ref={textType === 'name' ? nameRef : nullRef}
         name={textType}
         type='text'
         className={styles + ' text-black'}

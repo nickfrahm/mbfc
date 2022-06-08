@@ -2,7 +2,8 @@ import Section from './Section';
 import Button from './Button';
 
 function PlayerForm(props) {
-  const { activePlayer, changeHandler, addToActiveArr } = props;
+  const { activePlayer, changeHandler, addToActiveArr, nameRef, nullRef } =
+    props;
 
   return (
     <div className='md:w-2/3 flex flex-col justify-center content-center w-11/12 md:m-2 m-6 text-center'>
@@ -13,6 +14,8 @@ function PlayerForm(props) {
           textOverride='Player Name'
           player={activePlayer}
           changeHandler={changeHandler}
+          nameRef={nameRef}
+          nullRef={nullRef}
         />
         <Section
           type='list'

@@ -1,7 +1,7 @@
 import PlayerMenu from './PlayerMenu';
 import PlayerForm from './PlayerForm';
 import uniqid from 'uniqid';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function MainContainer() {
   const [players, setPlayers] = useState([]);
@@ -47,6 +47,21 @@ function MainContainer() {
     },
   ];
 
+  const nameRef = useRef('');
+  const nullRef = useRef(null);
+
+  useEffect(() => {
+    console.log('activePlayer useEffect logged.');
+    let updatedPlayers = players.map((player) => {
+      if (player.id === activePlayer.id) {
+        return { ...player, name: activePlayer.name };
+      }
+      return player;
+    });
+    setPlayers(updatedPlayers);
+    nameRef.current.value = activePlayer.name;
+  }, [activePlayer.name]);
+
   useEffect(() => {
     setPlayers(mockPlayers);
   }, []);
@@ -71,6 +86,7 @@ function MainContainer() {
     const { id } = e.target;
     console.log('player clicked, id: ' + id);
     setActivePlayer(players.find((player) => player.id === id));
+    nameRef.current.value = activePlayer.name;
     resetAddFields();
   };
 
@@ -151,6 +167,8 @@ function MainContainer() {
         activePlayer={activePlayer}
         changeHandler={changeHandler}
         addToActiveArr={addToActiveArr}
+        nameRef={nameRef}
+        nullRef={nullRef}
       />
     </div>
   );
