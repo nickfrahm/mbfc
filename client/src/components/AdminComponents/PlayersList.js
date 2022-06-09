@@ -3,7 +3,7 @@ import ListItem from './ListItem';
 function PlayersList(props) {
   const { players, handlePlayerClick } = props;
   return (
-    <ul className='bg-red-900'>
+    <ul>
       {players.map((player) => {
         return (
           <ListItem
@@ -12,6 +12,7 @@ function PlayersList(props) {
             detail={player.name}
             clickHandler={handlePlayerClick}
             id={player.id}
+            canDelete={true}
           />
         );
       })}

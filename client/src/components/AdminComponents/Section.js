@@ -29,6 +29,7 @@ function Section(props) {
               val={subject === 'uclPoints' ? player.uclPoints : player.name}
               isNumber={true}
               nameRef={nameRef}
+              nullRef={nullRef}
             />
           );
         } else {
