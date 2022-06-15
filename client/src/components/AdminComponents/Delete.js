@@ -5,7 +5,7 @@ function Delete(props) {
   };
 
   return (
-    <span onClick={click} className={styles}>
+    <span onClick={click} className={styles} id={itemId}>
       {canDelete === true ? 'x' : ''}
     </span>
   );

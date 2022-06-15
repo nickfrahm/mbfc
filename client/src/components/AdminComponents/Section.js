@@ -12,6 +12,7 @@ function Section(props) {
     addToActiveArr,
     nameRef,
     nullRef,
+    handleDeleteItem,
   } = props;
 
   return (
@@ -42,6 +43,7 @@ function Section(props) {
               isTeams={isTeams}
               changeHandler={changeHandler}
               addToActiveArr={addToActiveArr}
+              handleDeleteItem={handleDeleteItem}
             />
           );
         }

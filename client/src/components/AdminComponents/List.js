@@ -11,6 +11,7 @@ function List(props) {
     isTeams,
     changeHandler,
     addToActiveArr,
+    handleDeleteItem,
   } = props;
 
   return (
@@ -39,6 +40,7 @@ function List(props) {
                   detail={team.name}
                   itemKey={uniqid()}
                   key={uniqid()}
+                  handleDeleteItem={handleDeleteItem}
                 />
               );
             })

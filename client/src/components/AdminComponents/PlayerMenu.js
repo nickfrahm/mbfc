@@ -3,13 +3,18 @@ import PlayersList from './PlayersList';
 //import Text from './Text';
 
 function PlayerMenu(props) {
-  const { players, handlePlayerClick, addToActiveArr } = props;
+  const { players, handlePlayerClick, addToActiveArr, playerDeleteClick } =
+    props;
   return (
     <div className='flex flex-col justify-center content-center md:w-1/3 w-11/12 md:m-2 text-center'>
       <h2 className='underline text-slate-50 text-3xl my-2 cursor-default'>
         Players
       </h2>
-      <PlayersList players={players} handlePlayerClick={handlePlayerClick} />
+      <PlayersList
+        players={players}
+        handlePlayerClick={handlePlayerClick}
+        playerDeleteClick={playerDeleteClick}
+      />
       {/*<Text
         textType='playerName'
         text='Player'

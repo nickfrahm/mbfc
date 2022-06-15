@@ -2,7 +2,15 @@ import Delete from './Delete';
 import { useState } from 'react';
 
 function ListItem(props) {
-  const { detail, itemKey, clickHandler, id, canDelete } = props;
+  const {
+    detail,
+    itemKey,
+    clickHandler,
+    id,
+    canDelete,
+    playerDeleteClick,
+    handleDeleteItem,
+  } = props;
   const [hover, setHover] = useState(false);
 
   return (
@@ -27,6 +35,7 @@ function ListItem(props) {
             ? 'pl-1 pr-2 pb-1 text-left leading-none bg-red-800 rounded-md'
             : 'hidden'
         }
+        click={playerDeleteClick}
       />
     </li>
   );

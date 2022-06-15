@@ -2,8 +2,14 @@ import Section from './Section';
 import Button from './Button';
 
 function PlayerForm(props) {
-  const { activePlayer, changeHandler, addToActiveArr, nameRef, nullRef } =
-    props;
+  const {
+    activePlayer,
+    changeHandler,
+    addToActiveArr,
+    nameRef,
+    nullRef,
+    handleDeleteItem,
+  } = props;
 
   return (
     <div className='md:w-2/3 flex flex-col justify-center content-center w-11/12 md:m-2 m-6 text-center'>
@@ -25,6 +31,7 @@ function PlayerForm(props) {
           textOverride='Add a team...'
           changeHandler={changeHandler}
           addToActiveArr={addToActiveArr}
+          handleDeleteItem={handleDeleteItem}
         />
         <Section
           type='list'
@@ -34,6 +41,7 @@ function PlayerForm(props) {
           textOverride='Add Competition Won...'
           changeHandler={changeHandler}
           addToActiveArr={addToActiveArr}
+          handleDeleteItem={handleDeleteItem}
         />
         <Section
           type='text'

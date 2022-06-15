@@ -156,6 +156,23 @@ function MainContainer() {
 
   const playerDeleteClick = (e) => {
     const { id } = e.target;
+    e.stopPropagation();
+    console.log('player delete clicked');
+    const newPlayersArr = players.filter((player) => player.id !== id);
+    setPlayers(newPlayersArr);
+    if (activePlayer.id === id) {
+      setActivePlayer({
+        id: uniqid(),
+        name: '',
+        teams: [],
+        uclPoints: 0,
+        competitionWins: [],
+      });
+    }
+  };
+
+  const handleDeleteItem = (e) => {
+    console.log('deleting item');
   };
 
   return (
@@ -165,6 +182,7 @@ function MainContainer() {
         handlePlayerClick={handlePlayerClick}
         changeHandler={changeHandler}
         addToActiveArr={addToActiveArr}
+        playerDeleteClick={playerDeleteClick}
       />
       <PlayerForm
         players={players}
@@ -173,6 +191,7 @@ function MainContainer() {
         addToActiveArr={addToActiveArr}
         nameRef={nameRef}
         nullRef={nullRef}
+        handleDeleteItem={handleDeleteItem}
       />
     </div>
   );
