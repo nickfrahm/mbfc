@@ -35,12 +35,15 @@ function List(props) {
       <ul className='w-2/3'>
         {player.teams && isTeams
           ? player.teams.map((team) => {
+              console.log(team);
               return (
                 <ListItem
                   detail={team.name}
                   itemKey={uniqid()}
                   key={uniqid()}
                   handleDeleteItem={handleDeleteItem}
+                  canDelete={true}
+                  subject={subject}
                 />
               );
             })

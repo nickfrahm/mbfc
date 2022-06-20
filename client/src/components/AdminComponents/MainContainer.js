@@ -50,6 +50,7 @@ function MainContainer() {
   const nameRef = useRef('');
   const nullRef = useRef(null);
 
+  //active player name changed on form
   useEffect(() => {
     console.log('activePlayer useEffect logged.');
     let updatedPlayers = players.map((player) => {
@@ -62,6 +63,19 @@ function MainContainer() {
     nameRef.current.value = activePlayer.name;
   }, [activePlayer.name]);
 
+  //active player teams changed on form
+  useEffect(() => {
+    console.log('activePlayer teams changed.');
+    let updatedPlayers = players.map((player) => {
+      if (player.id === activePlayer.id) {
+        return { ...player, teams: activePlayer.teams };
+      }
+      return player;
+    });
+    setPlayers(updatedPlayers);
+    //nameRef.current.value = activePlayer.name;
+  }, [activePlayer.teams]);
+
   useEffect(() => {
     setPlayers(mockPlayers);
   }, []);
@@ -71,7 +85,6 @@ function MainContainer() {
     console.log(addTeamField);
     console.log(addCompField);
     console.log(players);
-    //console.log(addPlayerField);
   });
 
   const resetAddFields = () => {
@@ -172,7 +185,21 @@ function MainContainer() {
   };
 
   const handleDeleteItem = (e) => {
+    e.stopPropagation();
     console.log('deleting item');
+    if (e.target.parentElement.classList.contains('teams-li')) {
+      const newTeamsList = activePlayer.teams.filter((team) => {
+        if (team.name !== e.target.parentElement.childNodes[0].textContent) {
+          console.log(
+            `Team names ${team.name} and ${e.target.parentElement.childNodes[0].textContent} don't match, don't delete.`
+          );
+          return true;
+        }
+      });
+
+      setActivePlayer({ ...activePlayer, teams: newTeamsList });
+      console.log(activePlayer);
+    }
   };
 
   return (

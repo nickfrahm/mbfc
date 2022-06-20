@@ -10,14 +10,24 @@ function ListItem(props) {
     canDelete,
     playerDeleteClick,
     handleDeleteItem,
+    isPlayer,
+    subject,
   } = props;
   const [hover, setHover] = useState(false);
+
+  const classNameGenerator = () => {
+    if (subject !== null && subject !== '') {
+      return `cursor-pointer my-2 ${subject}-li`;
+    }
+
+    return 'cursor-pointer my-2';
+  };
 
   return (
     <li
       id={id}
       key={itemKey}
-      className='cursor-pointer my-2'
+      className={classNameGenerator()}
       onClick={clickHandler}
       onMouseEnter={(e) => {
         setHover(true);
@@ -35,7 +45,7 @@ function ListItem(props) {
             ? 'pl-1 pr-2 pb-1 text-left leading-none bg-red-800 rounded-md'
             : 'hidden'
         }
-        click={playerDeleteClick}
+        click={isPlayer ? playerDeleteClick : handleDeleteItem}
       />
     </li>
   );

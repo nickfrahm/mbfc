@@ -14,6 +14,7 @@ function PlayersList(props) {
             id={player.id}
             canDelete={true}
             playerDeleteClick={playerDeleteClick}
+            isPlayer={true}
           />
         );
       })}
