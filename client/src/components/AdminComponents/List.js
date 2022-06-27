@@ -35,7 +35,6 @@ function List(props) {
       <ul className='w-2/3'>
         {player.teams && isTeams
           ? player.teams.map((team) => {
-              console.log(team);
               return (
                 <ListItem
                   detail={team.name}
@@ -50,7 +49,14 @@ function List(props) {
           : player.competitionWins && !isTeams
           ? player.competitionWins.map((comp) => {
               return (
-                <ListItem detail={comp} itemKey={uniqid()} key={uniqid()} />
+                <ListItem
+                  detail={comp}
+                  itemKey={uniqid()}
+                  key={uniqid()}
+                  handleDeleteItem={handleDeleteItem}
+                  canDelete={true}
+                  subject={subject}
+                />
               );
             })
           : 'No information on this player'}

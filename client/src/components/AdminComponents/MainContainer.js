@@ -76,6 +76,19 @@ function MainContainer() {
     //nameRef.current.value = activePlayer.name;
   }, [activePlayer.teams]);
 
+  //active player comps won changed on form
+  useEffect(() => {
+    console.log('activePlayer teams changed.');
+    let updatedPlayers = players.map((player) => {
+      if (player.id === activePlayer.id) {
+        return { ...player, competitionWins: activePlayer.competitionWins };
+      }
+      return player;
+    });
+    setPlayers(updatedPlayers);
+    //nameRef.current.value = activePlayer.name;
+  }, [activePlayer.competitionWins]);
+
   useEffect(() => {
     setPlayers(mockPlayers);
   }, []);
@@ -187,6 +200,8 @@ function MainContainer() {
   const handleDeleteItem = (e) => {
     e.stopPropagation();
     console.log('deleting item');
+
+    //handle Team deletion
     if (e.target.parentElement.classList.contains('teams-li')) {
       const newTeamsList = activePlayer.teams.filter((team) => {
         if (team.name !== e.target.parentElement.childNodes[0].textContent) {
@@ -198,6 +213,21 @@ function MainContainer() {
       });
 
       setActivePlayer({ ...activePlayer, teams: newTeamsList });
+      console.log(activePlayer);
+    }
+
+    //handle Comp Wins deletion
+    if (e.target.parentElement.classList.contains('competitionWins-li')) {
+      const newCompList = activePlayer.competitionWins.filter((win) => {
+        if (win !== e.target.parentElement.childNodes[0].textContent) {
+          console.log(
+            `Comp wins ${win} and ${e.target.parentElement.childNodes[0].textContent} don't match, don't delete.`
+          );
+          return true;
+        }
+      });
+
+      setActivePlayer({ ...activePlayer, competitionWins: newCompList });
       console.log(activePlayer);
     }
   };
