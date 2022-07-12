@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const tableScraper = require('../../../scraper/tableData');
+const tableScraper = require('../../scraper/tableData');
 
 //get all league data. Leagues Array->Team Array->Team Object
 //TODO: refactor hardcorded URLs.
