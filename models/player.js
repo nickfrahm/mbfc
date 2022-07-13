@@ -8,4 +8,4 @@ const PlayerSchema = new Schema({
   competitionWins: { type: [String], required: true },
 });
 
-module.exports = PlayerSchema;
+module.exports = mongoose.model('Player', PlayerSchema);

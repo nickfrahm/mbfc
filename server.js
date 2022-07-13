@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const port = 5000;
-const mbfcAPI = require('./routes/api/tables/tableData');
+const tableRoutes = require('./routes/tables/tableData');
+const adminRoutes = require('./routes/adminRoutes');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -17,7 +18,8 @@ setTimeout(() => {
 }, 10000);
 
 //Get Routes For API
-app.use('/api', mbfcAPI);
+app.use('/api', tableRoutes);
+app.use('/api', adminRoutes);
 
 app.get('/', (req, res) => {
   res.send('Retrieve data from /api/ routes');

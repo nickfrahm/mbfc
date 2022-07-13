@@ -15,7 +15,7 @@ router.get('/tableData/all', (req, res) => {
       });
   } catch (error) {
     res.status(400);
-    res.send('Error getting all table data: ' + error);
+    res.json({ error: 'Error getting table data: ' + error });
   }
 });
 
@@ -37,7 +37,7 @@ router.get('/tableData/:league', (req, res) => {
     tableScraper.scrapeTableData(url).then((data) => res.json(data));
   } catch (error) {
     res.status(400);
-    res.send('Error getting table data: ' + error);
+    res.json({ error: 'Error getting table data: ' + error });
   }
 });
 
