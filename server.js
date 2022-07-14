@@ -18,6 +18,7 @@ setTimeout(() => {
 }, 10000);
 
 //Get Routes For API
+app.use(express.json());
 app.use('/api', tableRoutes);
 app.use('/api', adminRoutes);
 
